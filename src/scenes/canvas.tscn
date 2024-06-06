@@ -15,6 +15,6 @@ script = ExtResource("1_tw7p3")
 
 [node name="Godot" parent="." instance=ExtResource("2_t2g44")]
 material = SubResource("ShaderMaterial_iwqjh")
-position = Vector2(690, 462)
-scale = Vector2(12, 8)
+position = Vector2(1439, 1003.5)
+scale = Vector2(7.375, 4.13281)
 region_rect = Rect2(320, 360, 456, 184)

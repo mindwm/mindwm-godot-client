@@ -18,25 +18,33 @@ func _initialize_capture() -> void:
 
 	for f in cs.feeds():
 		print("%s: %s" % [f.get_wm_name(), f.get_wm_class()])
-		if f.get_wm_class() == "Navigator":
-			feed = f
-			break
+		#if f.get_wm_class() == "Navigator":
+			#feed = f
+			#break
 			
 		if f.get_wm_name() == "Alacritty":
 			feed = f
 			break
 
+	if !feed:
+		return
+
 	print("using %s (%s)" % [feed, feed.get_wm_name()])
 
 	feed.feed_is_active = true
 	
-	var t = material.get_shader_parameter("tex")
+	var t : Texture2D = material.get_shader_parameter("tex")
 	t.capture_feed_id = feed.get_id()
 	material.set_shader_parameter("tex", t)
 	
 func _physics_process(_delta: float) -> void:
 	_update_click_polygon()
 	CaptureServer.update(feed)
+	var t : Texture2D = material.get_shader_parameter("tex")
+	var tsz = t.get_size()
+	print("tex.size: %s" % tsz)
+	scale.x = tsz.x / 128
+	scale.y = tsz.y / 128
 
 
 ## Updates the clickable area, preventing inputs from passing through the
