@@ -43,8 +43,10 @@ func _physics_process(_delta: float) -> void:
 	var t : Texture2D = material.get_shader_parameter("tex")
 	var tsz = t.get_size()
 	print("tex.size: %s" % tsz)
-	scale.x = tsz.x / 128
-	scale.y = tsz.y / 128
+	scale.x = (tsz.x / 128) * 0.3
+	scale.y = (tsz.y / 128) * 0.3
+	global_position = feed.get_position()
+	#print("pos: %s, geom: %s" % [feed.get_position(), feed.get_geom()])
 
 
 ## Updates the clickable area, preventing inputs from passing through the
@@ -59,7 +61,8 @@ func _update_click_polygon() -> void:
 ## A simple function that changes the position of the Godot icon randomly.
 func _on_click_area_input_event(_viewport: Node, event: InputEvent,
 		_shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
-		var window_size: Vector2i = get_window().size
-		global_position = Vector2(randf_range(0, window_size.x),
-				randf_range(0, window_size.y))
+	pass
+	#if event is InputEventMouseButton and event.is_pressed():
+		#var window_size: Vector2i = get_window().size
+		#global_position = Vector2(randf_range(0, window_size.x),
+				#randf_range(0, window_size.y))
