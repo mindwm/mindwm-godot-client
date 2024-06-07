@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc4dmwi7j2s24"]
+
+[sub_resource type="Theme" id="Theme_kimum"]
+default_font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ho3cu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ux65y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_kimum")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 373.0
+offset_bottom = 126.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ho3cu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainerTop" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+text = "Lorem ipsum dolorum"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Item #1"
+popup/item_1/text = "Item #2"
+popup/item_1/id = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+text = "Omg Bebebe"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ux65y")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Some text"
+
+[node name="HBoxContainerBottom" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainerBottom"]
+layout_mode = 2
+text = "Lorem ipsum dolorum"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/HBoxContainerBottom"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Item #1"
+popup/item_1/text = "Item #2"
+popup/item_1/id = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainerBottom"]
+layout_mode = 2
+text = "Omg Bebebe"

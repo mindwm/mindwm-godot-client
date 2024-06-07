@@ -6,8 +6,8 @@ var dbus := DBus.new()
 
 
 func _ready() -> void:
-	if dbus.connect(dbus.DBUS_BUS_SYSTEM) != OK:
-		print("Unable to connect to system DBUS")
+	if dbus.connect(dbus.DBUS_BUS_SESSION) != OK:
+		print("Unable to connect to session DBUS")
 
 	_initialize_window()
 
@@ -24,6 +24,7 @@ func _initialize_window() -> void:
 	# read the documentation for these functions to learn about what they do.
 	window.size = Vector2i(DisplayServer.screen_get_size() + Vector2i(1, 1))
 	window.position = DisplayServer.screen_get_position()
+	#window.position = Vector2(0,0)
 #	window.always_on_top = true
 #	window.borderless = true
 	# Enabling Per Pixel Transparency -> Allowed through code doesn't work, as
@@ -35,3 +36,15 @@ func _initialize_window() -> void:
 	# If you have multiple windows in your project, you can
 	# modify the additional viewports' settings from the inspector.
 #	window.transparent_bg = true
+
+func _physics_process(delta: float) -> void:
+	var gp = $Godot.global_position
+	var sz : Vector2i = $Godot.size
+	#print("Window GP: %s" % gp)
+	$HUD.set_global_position(Vector2(gp.x-28,gp.y-236))
+	var p : PanelContainer = $HUD/PanelContainer/VBoxContainer/PanelContainer
+	#var sb = $HUD/PanelContainer/VBoxContainer/PanelContainer/
+	var sb : StyleBox = p.get_theme_stylebox("panel")
+	sb.content_margin_top = sz.y
+	p.add_theme_stylebox_override("panel", sb);
+	#$HUD/PanelContainer/VBoxContainer/Panel.add_theme_constant_override("margin_top", sz.y)

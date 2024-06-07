@@ -4,13 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://dqcm1tnwx6eyd" path="res://icon.svg" id="1_un4xy"]
 
 [node name="Godot" type="Sprite2D"]
+visible = false
+position = Vector2(1, 0)
 texture = ExtResource("1_un4xy")
+centered = false
 script = ExtResource("1_5067l")
 
 [node name="ClickArea" type="Area2D" parent="."]
+visible = false
+position = Vector2(64, 64)
 
 [node name="ClickPolygon" type="CollisionPolygon2D" parent="ClickArea"]
 unique_name_in_owner = true
+visible = false
 polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+disabled = true
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
