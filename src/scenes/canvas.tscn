@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8wp3527lqmah"]
+[gd_scene load_steps=8 format=3 uid="uid://b8wp3527lqmah"]
 
 [ext_resource type="Script" path="res://src/scenes/canvas.gd" id="1_tw7p3"]
 [ext_resource type="PackedScene" uid="uid://wy75x8vwgq6r" path="res://src/scenes/godot.tscn" id="2_t2g44"]
 [ext_resource type="Shader" path="res://src/scenes/canvas.gdshader" id="3_ce3tg"]
 [ext_resource type="PackedScene" uid="uid://cc4dmwi7j2s24" path="res://src/scenes/hud.tscn" id="4_mjymt"]
+[ext_resource type="Script" path="res://src/scenes/hud.gd" id="5_mj8ih"]
 
 [sub_resource type="CaptureTexture" id="CaptureTexture_sblt3"]
 
@@ -26,3 +27,4 @@ offset_right = -64.9717
 offset_bottom = -81.9209
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("5_mj8ih")

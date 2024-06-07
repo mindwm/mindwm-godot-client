@@ -1,15 +1,16 @@
 extends Node2D
 
-var dbus := DBus.new()
+var dbus := DBusInterface.new()
 
 ## The main screen the app uses.
 
 
 func _ready() -> void:
-	if dbus.connect(dbus.DBUS_BUS_SESSION) != OK:
-		print("Unable to connect to session DBUS")
-
 	_initialize_window()
+	$HUD._on_hud_show()
+	dbus.hud_show.connect($HUD._on_hud_show)
+	dbus.hud_hide.connect($HUD._on_hud_hide)
+	dbus.hud_switch.connect($HUD._on_hud_switch)
 
 
 func _initialize_window() -> void:
@@ -40,11 +41,16 @@ func _initialize_window() -> void:
 func _physics_process(delta: float) -> void:
 	var gp = $Godot.global_position
 	var sz : Vector2i = $Godot.size
-	#print("Window GP: %s" % gp)
-	$HUD.set_global_position(Vector2(gp.x-28,gp.y-236))
+	#print("Window GP: %s, sz: %s" % [gp, sz])
+	#$HUD.set_global_position(Vector2(gp.x-28,gp.y-236))
+	#$HUD.set_global_position(Vector2(gp.x,gp.y-60))
+	$HUD.set_global_position(Vector2(0,0))
 	var p : PanelContainer = $HUD/PanelContainer/VBoxContainer/PanelContainer
 	#var sb = $HUD/PanelContainer/VBoxContainer/PanelContainer/
 	var sb : StyleBox = p.get_theme_stylebox("panel")
-	sb.content_margin_top = sz.y
+	sb.content_margin_top = sz.y-128
 	p.add_theme_stylebox_override("panel", sb);
 	#$HUD/PanelContainer/VBoxContainer/Panel.add_theme_constant_override("margin_top", sz.y)
+
+func _process(delta: float) -> void:
+	dbus._process(delta)

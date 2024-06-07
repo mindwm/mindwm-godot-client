@@ -14,11 +14,11 @@ func _ready() -> void:
 func _initialize_capture() -> void:
 	var cs = CaptureServer;
 	print(cs)
-	for f in cs.feeds():
-		print("%s: %s" % [f.get_wm_name(), f.get_wm_class()])
+	#for f in cs.feeds():
+		#print("%s: %s" % [f.get_wm_name(), f.get_wm_class()])
 
 	for f in cs.feeds():
-		print("%s: %s" % [f.get_wm_name(), f.get_wm_class()])
+		#print("%s: %s" % [f.get_wm_name(), f.get_wm_class()])
 		#if f.get_wm_class() == "Navigator":
 			#feed = f
 			#break
